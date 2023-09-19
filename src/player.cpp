@@ -1,55 +1,81 @@
 #include"Player.hpp"
 
-void Player::update(SDL_Event& event,int currentTime){
+void Player::update(SDL_Event& event,int& currentTime){
 	//currentTime = SDL_RENDERER_PRESENTVSYNC;
 
-	 std::cout << currentTime<<std::endl;
-	// if (currentTime>= elaspedTime)std::cout << "sip"; 
+	 std::cout << currentFrame.x <<" "<< currentFrame.y <<std::endl;
 
-	if(SDL_KEYDOWN == event.type){
-		if(SDLK_a == event.key.keysym.sym)
-		{
-			setPos(vec2(getPos().x-=(speed/SDL_RENDERER_PRESENTVSYNC),getPos().y));
-			
-			if(currentTime>=elaspedTime)
-			{
-				currentTime = 0;
-				setTexturePos(vec2(getTexturePos().x + 16,0));
-				if(getTexturePos().x>=4)
-				{
-					setTexturePos(vec2(0,0));
-				}
-			}
+    //setTexturePos(vec2(,16));
 
-			else
-			{
-				setTexturePos(vec2(0,0));
-			}
+	if(SDL_KEYDOWN == event.type) {
+        if (SDLK_a == event.key.keysym.sym) {
+            setPos(vec2(getPos().x -= (speed / SDL_RENDERER_PRESENTVSYNC), getPos().y));
 
-		}
+            if (currentTime >= elaspedTime )
+            {
+                leftPos+=16;
+                setTexturePos(vec2( leftPos, 0));
+                currentTime = 0;
+            }
 
-		if(SDLK_d == event.key.keysym.sym)
-		{
-			setPos(vec2(getPos().x+=(speed/SDL_RENDERER_PRESENTVSYNC),getPos().y));
-		}
+            if (getTexturePos().x == 128)
+            {
+                leftPos = 96;
+            }
+        }
+
+        else if (SDLK_d == event.key.keysym.sym) {
+            setPos(vec2(getPos().x += (speed / SDL_RENDERER_PRESENTVSYNC), getPos().y));
+
+            if (currentTime >= elaspedTime)
+            {
+                rightPos+=16;
+                setTexturePos(vec2(rightPos, 0));
+                currentTime = 0;
+            }
 
 
-		//up and down
-		if(SDLK_w == event.key.keysym.sym)
-		{
-			setPos(vec2(getPos().x,getPos().y-=(speed/SDL_RENDERER_PRESENTVSYNC)));
-		}
+            if (getTexturePos().x == 192-16)
+            {
+                rightPos = 144-16;
+            }
+        }
 
-		if(SDLK_s == event.key.keysym.sym)
-		{
-			setPos(vec2(getPos().x,getPos().y+=(speed/SDL_RENDERER_PRESENTVSYNC)));
-		}
-	}
 
-	else
-	{
-		setTexturePos(vec2(0,0));
-	}
+        //up and down
+        else if (SDLK_w == event.key.keysym.sym) {
+            setPos(vec2(getPos().x, getPos().y -= (speed / SDL_RENDERER_PRESENTVSYNC)));
+
+            if (currentTime >= elaspedTime)
+            {
+                upPos+=16;
+                setTexturePos(vec2(upPos, 0));
+                currentTime = 0;
+            }
+
+
+            if (getTexturePos().x == 48*2-16)
+            {
+                upPos = 48;
+            }
+        }
+
+        else if (SDLK_s == event.key.keysym.sym) {
+            setPos(vec2(getPos().x, getPos().y += (speed / SDL_RENDERER_PRESENTVSYNC)));
+            if (currentTime >= elaspedTime)
+            {
+                downPos+=16;
+                setTexturePos(vec2(downPos, 0));
+                currentTime = 0;
+            }
+
+
+            if (getTexturePos().x == 48-16)
+            {
+                downPos = 0;
+            }
+        }
+    }
 }
 
 

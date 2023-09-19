@@ -21,11 +21,11 @@ int main(int argc, char const *argv[])
 
 	//SDL_Texture* grassTexture = window.loadTexture("res/gfx/ground_grass_1.png");
 	//SDL_Texture* KnightTexture = window.loadTexture("res/gfx/hulking_knight.png");
-	SDL_Texture* playerTextureNormal = window.loadTexture("res/gfx/Sprout Lands - Sprites - Basic pack/Characters/its 16x16.png");
+	SDL_Texture* playerTextureNormal = window.loadTexture("res/gfx/Sprout Lands - Sprites - Basic pack/Characters/its 16x16 2.png");
 	
         
         
-	Player player(vec2(0,0),vec2(16,16),vec2(0,0),playerTextureNormal);
+	Player player(vec2(300,0),vec2(16,16),vec2(0,0),playerTextureNormal);
 
 	// std::vector<Entity> v = {
 	// 	Entity(69,78,grassTexture),
@@ -49,7 +49,7 @@ int main(int argc, char const *argv[])
 	int playerYPos= 0;
 
 
-	while(gameRunning == true)
+	while(gameRunning)
 	{
 
 		while(SDL_PollEvent(&event))
@@ -72,24 +72,24 @@ int main(int argc, char const *argv[])
 		cT+=SDL_RENDERER_PRESENTVSYNC;
 
 
-		// if(player.getTexturePos().x == 48)  
-		// {
-		// 	playerYPos += 16;
-		// 	player.	setTexturePos(vec2(0,playerYPos));
-		// }
+/*		 if(player.getTexturePos().x == 48)
+		 {
+		 	playerYPos += 0;
+		 	player.	setTexturePos(vec2(0,playerYPos));
+		 }
 
-		// if(player.getTexturePos().y >= 64)
-		// {
-		// 	playerYPos = 0;
-		// }
+		 if(player.getTexturePos().y >= 64)
+		 {
+		 	playerYPos = 0;
+		 }
 		
 
 
-		// if(cT >= elT)
-		// {
-		// 	player.setTexturePos(vec2(player.getTexturePos().x+16,playerYPos));
-		// 	cT= 0;
-		// }
+		 if(cT >= elT)
+		 {
+		 	player.setTexturePos(vec2(player.getTexturePos().x+16,playerYPos));
+		 	cT= 0;
+		 }*/
 
 		// std::cout << "x: " << player.getTexturePos().x << " y: " << player.getTexturePos().y << std::endl; 
 		//window.render(platform0);

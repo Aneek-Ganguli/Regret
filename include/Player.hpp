@@ -8,7 +8,7 @@
 class Player
 {
 public:
-	void update(SDL_Event& event,int currentTime);
+	void update(SDL_Event& event,int& currentTime);
 
 	Player(vec2 pos ,vec2 p_scale, vec2 p_texture_pos, SDL_Texture* p_tex);
 	vec2&  getPos(){
@@ -25,7 +25,11 @@ private:
 	vec2  pos;
 	SDL_Rect currentFrame;
 	SDL_Texture* tex;
-	float speed = 10.0f;
+	float speed = 7.5f;
 	//int currentTime = SDL_RENDERER_PRESENTVSYNC;
-	int elaspedTime = 1024;
+	int elaspedTime = 1024/4;
+    float leftPos = 96;
+    float rightPos = 144-16;
+    float upPos  = 48;
+    float downPos = 0;
 };
